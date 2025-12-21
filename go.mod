@@ -1,6 +1,6 @@
 module github.com/luxfi/utils
 
-go 1.24.5
+go 1.25.5
 
 require (
 	github.com/gorilla/rpc v1.2.1
