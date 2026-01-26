@@ -4,60 +4,15 @@
 package utils
 
 import (
-	"encoding/json"
-	"sync"
+	"github.com/luxfi/atomic"
 )
 
-var (
-	_ json.Marshaler   = (*Atomic[struct{}])(nil)
-	_ json.Unmarshaler = (*Atomic[struct{}])(nil)
-)
+// Atomic is a re-export from the standalone atomic module for backward compatibility.
+// Use github.com/luxfi/atomic directly for new code.
+type Atomic[T any] = atomic.Atomic[T]
 
-type Atomic[T any] struct {
-	lock  sync.RWMutex
-	value T
-}
-
+// NewAtomic creates a new Atomic with the given initial value.
+// Use github.com/luxfi/atomic.NewAtomic directly for new code.
 func NewAtomic[T any](value T) *Atomic[T] {
-	return &Atomic[T]{
-		value: value,
-	}
-}
-
-func (a *Atomic[T]) Get() T {
-	a.lock.RLock()
-	defer a.lock.RUnlock()
-
-	return a.value
-}
-
-func (a *Atomic[T]) Set(value T) {
-	a.lock.Lock()
-	defer a.lock.Unlock()
-
-	a.value = value
-}
-
-func (a *Atomic[T]) Swap(value T) T {
-	a.lock.Lock()
-	defer a.lock.Unlock()
-
-	old := a.value
-	a.value = value
-
-	return old
-}
-
-func (a *Atomic[T]) MarshalJSON() ([]byte, error) {
-	a.lock.RLock()
-	defer a.lock.RUnlock()
-
-	return json.Marshal(a.value)
-}
-
-func (a *Atomic[T]) UnmarshalJSON(b []byte) error {
-	a.lock.Lock()
-	defer a.lock.Unlock()
-
-	return json.Unmarshal(b, &a.value)
+	return atomic.NewAtomic(value)
 }
