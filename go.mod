@@ -1,6 +1,6 @@
 module github.com/luxfi/utils
 
-go 1.26.1
+go 1.26.3
 
 require (
 	github.com/luxfi/atomic v1.0.0
