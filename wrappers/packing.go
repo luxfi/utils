@@ -80,7 +80,7 @@ func (p *Packer) PackShort(val uint16) {
 		return
 	}
 
-	binary.BigEndian.PutUint16(p.Bytes[p.Offset:], val)
+	binary.LittleEndian.PutUint16(p.Bytes[p.Offset:], val)
 	p.Offset += ShortLen
 }
 
@@ -91,7 +91,7 @@ func (p *Packer) UnpackShort() uint16 {
 		return 0
 	}
 
-	val := binary.BigEndian.Uint16(p.Bytes[p.Offset:])
+	val := binary.LittleEndian.Uint16(p.Bytes[p.Offset:])
 	p.Offset += ShortLen
 	return val
 }
@@ -103,7 +103,7 @@ func (p *Packer) PackInt(val uint32) {
 		return
 	}
 
-	binary.BigEndian.PutUint32(p.Bytes[p.Offset:], val)
+	binary.LittleEndian.PutUint32(p.Bytes[p.Offset:], val)
 	p.Offset += IntLen
 }
 
@@ -114,7 +114,7 @@ func (p *Packer) UnpackInt() uint32 {
 		return 0
 	}
 
-	val := binary.BigEndian.Uint32(p.Bytes[p.Offset:])
+	val := binary.LittleEndian.Uint32(p.Bytes[p.Offset:])
 	p.Offset += IntLen
 	return val
 }
@@ -126,7 +126,7 @@ func (p *Packer) PackLong(val uint64) {
 		return
 	}
 
-	binary.BigEndian.PutUint64(p.Bytes[p.Offset:], val)
+	binary.LittleEndian.PutUint64(p.Bytes[p.Offset:], val)
 	p.Offset += LongLen
 }
 
@@ -137,7 +137,7 @@ func (p *Packer) UnpackLong() uint64 {
 		return 0
 	}
 
-	val := binary.BigEndian.Uint64(p.Bytes[p.Offset:])
+	val := binary.LittleEndian.Uint64(p.Bytes[p.Offset:])
 	p.Offset += LongLen
 	return val
 }
