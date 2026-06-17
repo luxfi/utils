@@ -1,4 +1,4 @@
-# LLM.md - Hanzo Utils
+# Hanzo Utils
 
 ## Overview
 Go module: github.com/luxfi/utils
