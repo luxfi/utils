@@ -5,7 +5,7 @@ go 1.26.4
 require (
 	github.com/gorilla/rpc v1.2.1
 	github.com/luxfi/atomic v1.0.0
-	github.com/luxfi/constants v1.5.7
+	github.com/luxfi/constants v1.6.0
 	github.com/luxfi/crypto v1.19.17
 	github.com/stretchr/testify v1.11.1
 )
