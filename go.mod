@@ -4,6 +4,7 @@ go 1.26.4
 
 require (
 	github.com/gorilla/rpc v1.2.1
+	github.com/holiman/uint256 v1.3.2
 	github.com/luxfi/atomic v1.0.0
 	github.com/luxfi/constants v1.6.2
 	github.com/luxfi/crypto v1.20.2
@@ -16,7 +17,6 @@ require (
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.4.1 // indirect
 	github.com/grandcat/zeroconf v1.0.0 // indirect
-	github.com/holiman/uint256 v1.3.2 // indirect
 	github.com/luxfi/accel v1.2.4 // indirect
 	github.com/luxfi/cache v1.3.1 // indirect
 	github.com/luxfi/container v0.2.1 // indirect
