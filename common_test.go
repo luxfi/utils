@@ -16,28 +16,28 @@ import (
 func TestAppendSlices(t *testing.T) {
 	tests := []struct {
 		name   string
-		slices [][]interface{}
-		want   []interface{}
+		slices [][]any
+		want   []any
 	}{
 		{
 			name:   "AppendSlices with strings",
-			slices: [][]interface{}{{"a", "b", "c"}, {"d", "e", "f"}, {"g", "h", "i"}},
-			want:   []interface{}{"a", "b", "c", "d", "e", "f", "g", "h", "i"},
+			slices: [][]any{{"a", "b", "c"}, {"d", "e", "f"}, {"g", "h", "i"}},
+			want:   []any{"a", "b", "c", "d", "e", "f", "g", "h", "i"},
 		},
 		{
 			name:   "AppendSlices with ints",
-			slices: [][]interface{}{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}},
-			want:   []interface{}{1, 2, 3, 4, 5, 6, 7, 8, 9},
+			slices: [][]any{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}},
+			want:   []any{1, 2, 3, 4, 5, 6, 7, 8, 9},
 		},
 		{
 			name:   "AppendSlices with empty slices",
-			slices: [][]interface{}{{}, {}, {}},
-			want:   []interface{}{},
+			slices: [][]any{{}, {}, {}},
+			want:   []any{},
 		},
 		{
 			name:   "Append identical slices",
-			slices: [][]interface{}{{"a", "b", "c"}, {"a", "b", "c"}},
-			want:   []interface{}{"a", "b", "c", "a", "b", "c"},
+			slices: [][]any{{"a", "b", "c"}, {"a", "b", "c"}},
+			want:   []any{"a", "b", "c", "a", "b", "c"},
 		},
 	}
 
@@ -52,7 +52,7 @@ func TestAppendSlices(t *testing.T) {
 }
 
 // Mock function for testing retries.
-func mockFunction() (interface{}, error) {
+func mockFunction() (any, error) {
 	return nil, errors.New("error occurred")
 }
 
@@ -69,7 +69,7 @@ func TestRetry(t *testing.T) {
 	}
 
 	// Test with a function that succeeds on the first attempt.
-	fn := func() (interface{}, error) {
+	fn := func() (any, error) {
 		return success, nil
 	}
 	result, err = Retry(fn, 3, 100*time.Millisecond)
@@ -82,7 +82,7 @@ func TestRetry(t *testing.T) {
 
 	// Test with a function that succeeds after multiple attempts.
 	count := 0
-	fn = func() (interface{}, error) {
+	fn = func() (any, error) {
 		count++
 		if count < 3 {
 			return nil, errors.New("error occurred")

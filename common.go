@@ -38,7 +38,7 @@ func Retry[T any](
 		result T
 		cumErr error
 	)
-	for attempt := 0; attempt < maxAttempts; attempt++ {
+	for range maxAttempts {
 		var err error
 		result, err = fn()
 		if err == nil {

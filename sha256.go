@@ -28,8 +28,8 @@ func GetSHA256FromDisk(binPath string) (string, error) {
 }
 
 func SearchSHA256File(file []byte, toSearch string) (string, error) {
-	lines := strings.Split(string(file), "\n")
-	for _, line := range lines {
+	lines := strings.SplitSeq(string(file), "\n")
+	for line := range lines {
 		sha256Info := strings.Fields(line)
 		if len(sha256Info) == 2 {
 			if sha256Info[1] == toSearch {
